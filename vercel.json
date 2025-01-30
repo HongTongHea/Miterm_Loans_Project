@@ -5,7 +5,9 @@
         {
             "src": "Dockerfile",
             "use": "@vercel/docker"
-        },
+        }
+    ],
+    "routes": [
         {
             "src": "/(.*)",
             "dest": "/public/index.php"
