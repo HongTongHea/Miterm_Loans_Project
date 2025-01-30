@@ -7,6 +7,8 @@
             "dest": "/public/index.php"
         }
     ],
+    "ignoreCommand": "echo 'No build step required'",
+    "installCommand": "composer install --no-dev --optimize-autoloader",
     "env": {
         "APP_ENV": "production",
         "APP_DEBUG": "true",
