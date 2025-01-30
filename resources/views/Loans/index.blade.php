@@ -5,8 +5,11 @@
 @section('app-content')
     <div class="card rounded-0">
         <div class="card-body">
+            @if (session('success'))
+                <div class="alert alert-success mt-3">{{ session('success') }}</div>
+            @endif
             <h1>Loans</h1>
-            <a href="{{ route('loans.create') }}" class="btn btn-primary btn-sm mb-3">Add New Loan</a>
+            <a href="{{ route('loans.create') }}" class="btn btn-primary btn-sm mb-3">Add New Loans</a>
             <table class="table table-sm table-hover table-responsive border">
                 <thead>
                     <tr>
@@ -25,7 +28,8 @@
                     @foreach ($loans as $loan)
                         <tr>
                             <td>{{ $loop->index + 1 }}</td>
-                            <td>{{ $loan->customer->first_name }}{{ $loan->customer->last_name }}</td> <!-- Assuming customer_id is the B-ID -->
+                            <td>{{ $loan->customer->first_name }}{{ $loan->customer->last_name }}</td>
+                            <!-- Assuming customer_id is the B-ID -->
                             <td>{{ $loan->loan_amount }}</td>
                             <td>{{ $loan->interest_rate }}%</td>
                             <td>{{ $loan->loan_term }} months</td>
