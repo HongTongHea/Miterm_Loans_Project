@@ -23,7 +23,7 @@
   "env": {
     "APP_ENV": "production",
     "APP_DEBUG": "false",
-    "APP_URL": "https://miterm-loans-project.vercel.app",
+    "APP_URL": "https://miterm-loans-project.vercel.app/loans",
     "APP_KEY": "base64:duHchA8GDqqrHiMVqNCCFYDhvO83G2/ND/0gCn4Ac7I=",
 
     "APP_CONFIG_CACHE": "/tmp/config.php",
