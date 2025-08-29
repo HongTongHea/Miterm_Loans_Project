@@ -112,6 +112,18 @@ return [
             // 'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'false'),
         ],
 
+        // In your config/database.php file
+       'd1' => [
+            'driver'   => 'd1',
+            'prefix'   => '',
+            'database' => env('CLOUDFLARE_D1_DATABASE_ID', ''),
+            'api'      => env('CLOUDFLARE_API_URL', 'https://api.cloudflare.com/client/v4'),
+            'auth'     => [
+                // supports either var; prefer CLOUDFLARE_API_TOKEN
+                'token'      => env('CLOUDFLARE_API_TOKEN', env('CLOUDFLARE_TOKEN', '')),
+                'account_id' => env('CLOUDFLARE_ACCOUNT_ID', ''),
+            ],
+        ],
     ],
 
     /*
