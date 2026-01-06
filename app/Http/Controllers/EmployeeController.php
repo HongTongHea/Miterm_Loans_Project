@@ -24,7 +24,7 @@ class EmployeeController extends Controller
 
         $this->saveOrUpdate($request, $employee);
 
-        return redirect()->route('Employees.index')
+        return redirect()->route('employees.index')
             ->with('success', 'Employee created successfully');
     }
 
@@ -40,7 +40,7 @@ class EmployeeController extends Controller
 
         $this->saveOrUpdate($request, $employee);
 
-        return redirect()->route('Employees.index')
+        return redirect()->route('employees.index')
             ->with('success', 'Employee updated successfully');
     }
 
@@ -61,7 +61,7 @@ class EmployeeController extends Controller
         $employee = Employee::findOrFail($id);
         $employee->delete();
 
-        return redirect()->route('Employees.index')
+        return redirect()->route('employees.index')
             ->with('success', 'Employee deleted successfully');
     }
 
