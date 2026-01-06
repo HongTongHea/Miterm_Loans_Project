@@ -22,7 +22,7 @@
     "env": {
         "APP_ENV": "production",
         "APP_DEBUG": "true",
-        "APP_URL": "https://hosting-laravel.vercel.app",
+        "APP_URL": "https://miterm-loans-project.vercel.app/",
         "APP_KEY": "base64:hXVQcnaBjjqrMHLDlNicO3qWUBbZbUgLirDw93TIFXA=",
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
@@ -34,7 +34,7 @@
         "LOG_CHANNEL": "stderr",
         "SESSION_DRIVER": "cookie",
         "DB_CONNECTION": "d1",
-        "CLOUDFLARE_D1_DATABASE_ID": "c74c2ee3-fef1-4888-94f4-10e543880e1a",
+        "CLOUDFLARE_D1_DATABASE_ID": "06eae414-8a03-4bfb-84b8-ed30173a4c71",
         "CLOUDFLARE_TOKEN": "qQKmiZNJBs6NOr6WuBGOot88vynajrCFu3bdWN3n",
         "CLOUDFLARE_ACCOUNT_ID": "6fe38376d3a719c719dbc456633874f9"
     }

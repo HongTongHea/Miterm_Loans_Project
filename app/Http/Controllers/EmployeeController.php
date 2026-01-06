@@ -12,12 +12,12 @@ class EmployeeController extends Controller
     public function index()
     {
         $employees = Employee::get();
-        return view('employees.index', compact('employees'));
+        return view('Employees.index', compact('employees'));
     }
 
     public function create()
     {
-        return view('employees.create');
+       return view('Employees.create');
     }
 
     public function store(Request $request)
@@ -35,7 +35,7 @@ class EmployeeController extends Controller
     public function edit(int $id)
     {
         $employee = Employee::findOrFail($id);
-        return view('employees.edit', compact('employee'));
+        return view('Employees.edit', compact('employee'));
     }
     public function update(Request $request, $id)
     {
@@ -44,7 +44,7 @@ class EmployeeController extends Controller
         $employee =  Employee::findOrFail($id);
 
         if ($this->saveOrUpdate($request, $employee)) {
-            return to_route('employees.index');
+            return to_route('Employees.index');
         } else {
             return redirect()->back()->withErrors($request->errors())->withInput();
         }
@@ -72,13 +72,13 @@ class EmployeeController extends Controller
     public function details($id)
     {
         $employee = Employee::findOrFail($id);
-        return view('employees.details', compact('employee'));
+        return view('Employees.details', compact('employee'));
     }
 
     public function delete($id)
     {
         $employee = Employee::findOrFail($id);
-        return view('employees.delete', compact('employee'));
+        return view('Employees.delete', compact('employee'));
     }
 
 
@@ -86,6 +86,6 @@ class EmployeeController extends Controller
     {
         $employee = Employee::findOrFail($id);
         $employee->delete();
-        return redirect()->route('employees.index')->with('success', 'Employee deleted successfully');
+        return redirect()->route('Employees.index')->with('success', 'Employee deleted successfully');
     }
 }
