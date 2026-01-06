@@ -2,90 +2,88 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Employee;
-
+use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
-
     public function index()
     {
-        $employees = Employee::get();
-        return view('Employees.index', compact('employees'));
+        $employees = Employee::all();
+        return view('employees.index', compact('employees'));
     }
 
     public function create()
     {
-       return view('Employees.create');
+        return view('employees.create');
     }
 
     public function store(Request $request)
     {
-
         $employee = new Employee();
 
-        if ($this->saveOrUpdate($request, $employee)) {
-            return to_route('employees.index');
-        } else {
-            return redirect()->back()->withErrors($request->errors())->withInput();
-        }
+        $this->saveOrUpdate($request, $employee);
+
+        return redirect()->route('employees.index')
+            ->with('success', 'Employee created successfully');
     }
 
     public function edit(int $id)
     {
         $employee = Employee::findOrFail($id);
-        return view('Employees.edit', compact('employee'));
-    }
-    public function update(Request $request, $id)
-    {
-
-
-        $employee =  Employee::findOrFail($id);
-
-        if ($this->saveOrUpdate($request, $employee)) {
-            return to_route('Employees.index');
-        } else {
-            return redirect()->back()->withErrors($request->errors())->withInput();
-        }
+        return view('employees.edit', compact('employee'));
     }
 
-    private function saveOrUpdate(Request $request, employee  $employee)
-    {
-        $request->validate([
-            'first_name' => 'required|max:50',
-            'last_name' => "required|max:50",
-            'gender' => "required"
-
-        ]);
-
-        $employee->first_name = $request->input('first_name');
-        $employee->last_name = $request->input('last_name');
-        $employee->gender = $request->input('gender');
-        $employee->phone = $request->input('phone');
-        $employee->email = $request->input('email');
-        $employee->address = $request->input('address');
-        $employee->active = $request->filled('active');
-
-        return $employee->save();
-    }
-    public function details($id)
+    public function update(Request $request, int $id)
     {
         $employee = Employee::findOrFail($id);
-        return view('Employees.details', compact('employee'));
+
+        $this->saveOrUpdate($request, $employee);
+
+        return redirect()->route('employees.index')
+            ->with('success', 'Employee updated successfully');
     }
 
-    public function delete($id)
+    public function details(int $id)
     {
         $employee = Employee::findOrFail($id);
-        return view('Employees.delete', compact('employee'));
+        return view('employees.details', compact('employee'));
     }
 
+    public function delete(int $id)
+    {
+        $employee = Employee::findOrFail($id);
+        return view('employees.delete', compact('employee'));
+    }
 
-    public function destroy($id)
+    public function destroy(int $id)
     {
         $employee = Employee::findOrFail($id);
         $employee->delete();
-        return redirect()->route('Employees.index')->with('success', 'Employee deleted successfully');
+
+        return redirect()->route('employees.index')
+            ->with('success', 'Employee deleted successfully');
+    }
+
+    private function saveOrUpdate(Request $request, Employee $employee): void
+    {
+        $validated = $request->validate([
+            'first_name' => 'required|string|max:50',
+            'last_name'  => 'required|string|max:50',
+            'gender'     => 'required|string',
+            'phone'      => 'nullable|string|max:30',
+            'email'      => 'nullable|email|max:100',
+            'address'    => 'nullable|string|max:255',
+        ]);
+
+        $employee->first_name = $validated['first_name'];
+        $employee->last_name  = $validated['last_name'];
+        $employee->gender     = $validated['gender'];
+        $employee->phone      = $validated['phone'] ?? null;
+        $employee->email      = $validated['email'] ?? null;
+        $employee->address    = $validated['address'] ?? null;
+        $employee->active     = $request->boolean('active');
+
+        $employee->save();
     }
 }
