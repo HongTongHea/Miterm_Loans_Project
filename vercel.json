@@ -1,31 +1,41 @@
 {
-  "version": 2,
-  "functions": {
-    "api/index.php": { "runtime": "vercel-php@0.7.3" }
-  },
-  "routes": [
-    { "src": "/(build/.*)", "dest": "/public/$1" },
-    { "src": "/(.*\\.(js|css|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot|otf|map))", "dest": "/public/$1" },
-    { "src": "/(.*)", "dest": "/api/index.php" }
-  ],
-  "env": {
-    "APP_ENV": "production",
-    "APP_DEBUG": "false",
-    "APP_URL": "https://yourprojectdomain.com",
-
-    "DB_CONNECTION": "d1",
-    "CLOUDFLARE_D1_DATABASE_ID": "@cloudflare_d1_database_id",
-    "CLOUDFLARE_ACCOUNT_ID": "@cloudflare_account_id",
-    "CLOUDFLARE_API_TOKEN": "@cloudflare_api_token",
-
-    "CACHE_DRIVER": "array",
-    "LOG_CHANNEL": "stderr",
-    "SESSION_DRIVER": "cookie",
-    "VIEW_COMPILED_PATH": "/tmp",
-    "APP_CONFIG_CACHE": "/tmp/config.php",
-    "APP_EVENTS_CACHE": "/tmp/events.php",
-    "APP_PACKAGES_CACHE": "/tmp/packages.php",
-    "APP_ROUTES_CACHE": "/tmp/routes.php",
-    "APP_SERVICES_CACHE": "/tmp/services.php"
-  }
+    "version": 2,
+    "framework": null,
+    "functions": {
+        "api/index.php": { "runtime": "vercel-php@0.7.3" }
+    },
+    "routes": [
+        {
+            "src": "/build/(.*)",
+            "dest": "/build/$1"
+        },
+        {
+            "src": "/(.*\\.(?:css|js|png|jpg|jpeg|gif|svg|ico|ttf|woff|woff2|eot|otf|webp|avif|txt))$",
+            "dest": "/public/$1"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/api/index.php"
+        }
+    ],
+    "outputDirectory": "public",
+    "env": {
+        "APP_ENV": "production",
+        "APP_DEBUG": "true",
+        "APP_URL": "https://hosting-laravel.vercel.app",
+        "APP_KEY": "base64:hXVQcnaBjjqrMHLDlNicO3qWUBbZbUgLirDw93TIFXA=",
+        "APP_CONFIG_CACHE": "/tmp/config.php",
+        "APP_EVENTS_CACHE": "/tmp/events.php",
+        "APP_PACKAGES_CACHE": "/tmp/packages.php",
+        "APP_ROUTES_CACHE": "/tmp/routes.php",
+        "APP_SERVICES_CACHE": "/tmp/services.php",
+        "VIEW_COMPILED_PATH": "/tmp",
+        "CACHE_DRIVER": "array",
+        "LOG_CHANNEL": "stderr",
+        "SESSION_DRIVER": "cookie",
+        "DB_CONNECTION": "d1",
+        "CLOUDFLARE_D1_DATABASE_ID": "c74c2ee3-fef1-4888-94f4-10e543880e1a",
+        "CLOUDFLARE_TOKEN": "qQKmiZNJBs6NOr6WuBGOot88vynajrCFu3bdWN3n",
+        "CLOUDFLARE_ACCOUNT_ID": "6fe38376d3a719c719dbc456633874f9"
+    }
 }
