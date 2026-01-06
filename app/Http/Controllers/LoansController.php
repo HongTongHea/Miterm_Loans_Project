@@ -17,7 +17,7 @@ class LoansController extends Controller
     public function index()
     {
         $loans = Loan::all();
-        return view('loans.index', compact('loans'));
+        return view('Loans.index', compact('loans'));
     }
 
     /**
@@ -26,7 +26,7 @@ class LoansController extends Controller
     public function create()
     {
         $customers = Customer::all();
-        return view('loans.create', compact('customers'));
+        return view('Loans.create', compact('customers'));
     }
 
     public function store(Request $request)
@@ -120,7 +120,7 @@ class LoansController extends Controller
     {
         $customers = Customer::all();
         $loan = Loan::findOrFail($id); // Retrieve the loan by ID
-        return view('loans.edit', compact('loan', 'customers')); // Pass the loan variable to the view
+        return view('Loans.edit', compact('loan', 'customers')); // Pass the loan variable to the view
     }
 
 
