@@ -10,12 +10,12 @@ class EmployeeController extends Controller
     public function index()
     {
         $employees = Employee::all();
-        return view('employees.index', compact('employees'));
+        return view('Employees.index', compact('employees'));
     }
 
     public function create()
     {
-        return view('employees.create');
+        return view('Employees.create');
     }
 
     public function store(Request $request)
@@ -24,14 +24,14 @@ class EmployeeController extends Controller
 
         $this->saveOrUpdate($request, $employee);
 
-        return redirect()->route('employees.index')
+        return redirect()->route('Employees.index')
             ->with('success', 'Employee created successfully');
     }
 
     public function edit(int $id)
     {
         $employee = Employee::findOrFail($id);
-        return view('employees.edit', compact('employee'));
+        return view('Employees.edit', compact('employee'));
     }
 
     public function update(Request $request, int $id)
@@ -40,20 +40,20 @@ class EmployeeController extends Controller
 
         $this->saveOrUpdate($request, $employee);
 
-        return redirect()->route('employees.index')
+        return redirect()->route('Employees.index')
             ->with('success', 'Employee updated successfully');
     }
 
     public function details(int $id)
     {
         $employee = Employee::findOrFail($id);
-        return view('employees.details', compact('employee'));
+        return view('Employees.details', compact('employee'));
     }
 
     public function delete(int $id)
     {
         $employee = Employee::findOrFail($id);
-        return view('employees.delete', compact('employee'));
+        return view('Employees.delete', compact('employee'));
     }
 
     public function destroy(int $id)
@@ -61,7 +61,7 @@ class EmployeeController extends Controller
         $employee = Employee::findOrFail($id);
         $employee->delete();
 
-        return redirect()->route('employees.index')
+        return redirect()->route('Employees.index')
             ->with('success', 'Employee deleted successfully');
     }
 
