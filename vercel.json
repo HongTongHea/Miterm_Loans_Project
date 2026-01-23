@@ -34,7 +34,7 @@
         "LOG_CHANNEL": "stderr",
         "SESSION_DRIVER": "cookie",
         "DB_CONNECTION": "d1",
-        "CLOUDFLARE_D1_DATABASE_ID": "06eae414-8a03-4bfb-84b8-ed30173a4c71",
+        "CLOUDFLARE_D1_DATABASE_ID": "4d6e480e-cac8-4e2f-abef-255e68d47323",
         "CLOUDFLARE_TOKEN": "qQKmiZNJBs6NOr6WuBGOot88vynajrCFu3bdWN3n",
         "CLOUDFLARE_ACCOUNT_ID": "6fe38376d3a719c719dbc456633874f9"
     }
